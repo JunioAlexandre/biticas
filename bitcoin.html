@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin — O Futuro do Dinheiro</title>
+    <meta name="description" content="Descubra o Bitcoin: a revolução financeira descentralizada que está transformando o mundo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="32" cy="32" r="30" fill="#f7931a"/>
+                <path d="M42.5 28.2c.6-4-2.4-6.2-6.6-7.6l1.4-5.5-3.3-.8-1.3 5.3c-.9-.2-1.8-.4-2.6-.6l1.3-5.3-3.3-.8-1.4 5.5c-.7-.2-1.4-.3-2.1-.5l-4.5-1.1-.9 3.5s2.4.6 2.4.6c1.3.3 1.6 1.2 1.5 1.9l-1.5 6.1c.1 0 .2 0 .3.1h-.3l-2.1 8.6c-.2.4-.6 1.1-1.5.8 0 0-2.4-.6-2.4-.6l-1.7 3.8 4.3 1.1c.8.2 1.6.4 2.3.6l-1.4 5.6 3.3.8 1.4-5.5c.9.2 1.8.5 2.6.7l-1.4 5.5 3.3.8 1.4-5.6c5.8 1.1 10.2.7 12-4.6 1.5-4.3-.1-6.7-3.1-8.3 2.2-.5 3.9-2 4.3-5z M38.7 34.7c-1.1 4.3-8.2 2-10.5 1.4l1.9-7.5c2.3.6 9.7 1.7 8.6 6.1zM35.1 28c-1 3.9-6.9 1.9-8.8 1.4l1.7-6.8c1.9.5 8.1 1.4 7.1 5.4z" fill="#fff"/>
+            </svg>
+            Bitcoin
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#features">Recursos</a></li>
+            <li><a href="#how-it-works">Como Funciona</a></li>
+            <li><a href="#comparison">Comparativo</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+
+        <a href="#cta" class="nav-cta">Começar Agora</a>
+
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+        <div class="hero-bg">
+            <canvas id="particleCanvas"></canvas>
+        </div>
+        <div class="hero-gradient"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                Rede ativa — Bloco #900,000+
+            </div>
+
+            <h1>O Futuro do <span class="gradient-text">Dinheiro</span> é Digital</h1>
+
+            <p class="hero-description">
+                Bitcoin é a primeira moeda verdadeiramente descentralizada do mundo — sem bancos, sem fronteiras, sem censura. Uma revolução financeira construída sobre código aberto e matemática.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#features" class="btn-primary">
+                    Explorar ↓
+                </a>
+                <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" class="btn-secondary">
+                    📄 Whitepaper
+                </a>
+            </div>
+
+            <div class="ticker">
+                <div class="ticker-card">
+                    <div>
+                        <div class="ticker-label">BTC / USD</div>
+                        <div class="ticker-price" id="btcPrice">--</div>
+                    </div>
+                    <div>
+                        <div class="ticker-label">24h</div>
+                        <div class="ticker-change up" id="btcChange">--</div>
+                    </div>
+                    <canvas class="ticker-sparkline" id="sparkline"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== STATS ========== -->
+    <section class="stats">
+        <div class="section-container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <div class="stat-value" id="statMarketCap">--</div>
+                    <div class="stat-label">Market Cap</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-value">21M</div>
+                    <div class="stat-label">Supply Máximo</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-value" id="statNodes">~60,000</div>
+                    <div class="stat-label">Nós Ativos</div>
+                </div>
+                <div class="stat-item reveal">
+                    <div class="stat-value">15 anos</div>
+                    <div class="stat-label">Tempo Online</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES ========== -->
+    <section id="features">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Por que Bitcoin?</span>
+                <h2 class="section-title">Construído para ser incensurável</h2>
+                <p class="section-subtitle">Uma rede financeira aberta, transparente e resistente a qualquer tipo de controle centralizado.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Descentralização Total</h3>
+                    <p>Sem servidores centrais. A rede Bitcoin é mantida por milhares de nós espalhados pelo mundo, tornando-a virtualmente impossível de derrubar.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Segurança Criptográfica</h3>
+                    <p>Protegido por SHA-256, o mesmo padrão usado por governos. Cada transação é matematicamente verificada e imutável na blockchain.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">💎</div>
+                    <h3>Escassez Programada</h3>
+                    <p>Apenas 21 milhões existirão. A cada ~4 anos, a emissão é cortada pela metade (halving), criando uma política monetária previsível e deflacionária.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">🌍</div>
+                    <h3>Sem Fronteiras</h3>
+                    <p>Envie valor para qualquer pessoa no planeta em minutos, 24/7, sem intermediários e com taxas mínimas comparadas ao sistema tradicional.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">👁️</div>
+                    <h3>Transparência Total</h3>
+                    <p>Toda transação é pública e auditável. Qualquer pessoa pode verificar o estado da rede e o histórico de transações a qualquer momento.</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Network</h3>
+                    <p>Camada 2 para pagamentos instantâneos e quase gratuitos. Milhões de transações por segundo, mantendo a segurança da blockchain principal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== HOW IT WORKS ========== -->
+    <section id="how-it-works" style="background: var(--bg-secondary);">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Passo a Passo</span>
+                <h2 class="section-title">Como o Bitcoin funciona?</h2>
+                <p class="section-subtitle">Do envio à confirmação, cada transação percorre um caminho elegante e seguro.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">01</div>
+                    <div class="timeline-content">
+                        <h3>Criação da Transação</h3>
+                        <p>Você assina digitalmente uma transação com sua chave privada, provando que é o dono dos bitcoins. Nenhuma informação pessoal é necessária.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">02</div>
+                    <div class="timeline-content">
+                        <h3>Propagação pela Rede</h3>
+                        <p>A transação é transmitida para a rede peer-to-peer e chega a milhares de nós em segundos, aguardando validação.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">03</div>
+                    <div class="timeline-content">
+                        <h3>Mineração e Validação</h3>
+                        <p>Mineradores competem para resolver um desafio criptográfico (Proof-of-Work). O vencedor inclui sua transação em um novo bloco.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-marker">04</div>
+                    <div class="timeline-content">
+                        <h3>Confirmação na Blockchain</h3>
+                        <p>O bloco é adicionado à cadeia e distribuído para toda a rede. Após ~6 confirmações, a transação é considerada irreversível.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== COMPARISON ========== -->
+    <section id="comparison" class="comparison-section">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">Comparativo</span>
+                <h2 class="section-title">Bitcoin vs. Sistema Tradicional</h2>
+                <p class="section-subtitle">Veja como o Bitcoin se compara ao sistema financeiro convencional.</p>
+            </div>
+
+            <div class="reveal">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Bitcoin ₿</th>
+                            <th>Bancos Tradicionais</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Disponibilidade</td>
+                            <td><span class="check">✓</span> 24/7/365</td>
+                            <td><span class="cross">✗</span> Horário comercial</td>
+                        </tr>
+                        <tr>
+                            <td>Controle Central</td>
+                            <td><span class="check">✓</span> Nenhum</td>
+                            <td><span class="cross">✗</span> Banco Central / Governo</td>
+                        </tr>
+                        <tr>
+                            <td>Transferência Internacional</td>
+                            <td><span class="check">✓</span> Minutos, taxas baixas</td>
+                            <td><span class="cross">✗</span> Dias, taxas altas</td>
+                        </tr>
+                        <tr>
+                            <td>Supply Fixo</td>
+                            <td><span class="check">✓</span> 21 milhões</td>
+                            <td><span class="cross">✗</span> Impressão ilimitada</td>
+                        </tr>
+                        <tr>
+                            <td>Censura</td>
+                            <td><span class="check">✓</span> Resistente</td>
+                            <td><span class="cross">✗</span> Contas podem ser congeladas</td>
+                        </tr>
+                        <tr>
+                            <td>Transparência</td>
+                            <td><span class="check">✓</span> Blockchain pública</td>
+                            <td><span class="cross">✗</span> Opaca</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section id="faq">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <span class="section-tag">FAQ</span>
+                <h2 class="section-title">Perguntas Frequentes</h2>
+                <p class="section-subtitle">Tudo que você precisa saber para dar os primeiros passos.</p>
+            </div>
+
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Bitcoin é seguro?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim. A rede Bitcoin nunca foi hackeada em mais de 15 anos. Ela é protegida por criptografia SHA-256 e pelo maior poder computacional do mundo. O que pode ser vulnerável são exchanges e carteiras mal configuradas — não a rede em si.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Preciso comprar 1 Bitcoin inteiro?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Não! Um Bitcoin é divisível em 100 milhões de partes chamadas <strong>satoshis</strong>. Você pode começar comprando qualquer valor, mesmo R$10. É como comprar gramas de ouro em vez de um lingote inteiro.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Quem criou o Bitcoin?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            O Bitcoin foi criado em 2008 por uma pessoa ou grupo sob o pseudônimo de <strong>Satoshi Nakamoto</strong>. O whitepaper foi publicado em outubro de 2008 e a rede começou em janeiro de 2009. A identidade de Satoshi permanece desconhecida até hoje.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        O que é mineração de Bitcoin?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Mineração é o processo de usar poder computacional para validar transações e adicionar novos blocos à blockchain. Os mineradores são recompensados com novos bitcoins por esse trabalho. Atualmente, a recompensa é de 3.125 BTC por bloco (após o halving de 2024).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Bitcoin é legal no Brasil?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Sim. O Brasil aprovou o <strong>Marco Legal dos Criptoativos</strong> (Lei 14.478/2022), regulamentando o uso de criptomoedas no país. Comprar, vender e utilizar Bitcoin é perfeitamente legal. Lucros devem ser declarados à Receita Federal.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CTA ========== -->
+    <section id="cta" class="cta-section">
+        <div class="section-container">
+            <div class="cta-box reveal">
+                <span class="section-tag">Comece agora</span>
+                <h2>Pronto para entrar na revolução?</h2>
+                <p>Dê o primeiro passo para a liberdade financeira. Aprenda, explore e comece com qualquer valor.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://bitcoin.org" target="_blank" class="btn-primary">Visitar Bitcoin.org</a>
+                    <a href="https://bitcoin.org/bitcoin.pdf" target="_blank" class="btn-secondary">📄 Ler o Whitepaper</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <svg width="20" height="20" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="30" fill="#f7931a"/><path d="M42.5 28.2c.6-4-2.4-6.2-6.6-7.6l1.4-5.5-3.3-.8-1.3 5.3c-.9-.2-1.8-.4-2.6-.6l1.3-5.3-3.3-.8-1.4 5.5c-.7-.2-1.4-.3-2.1-.5l-4.5-1.1-.9 3.5s2.4.6 2.4.6c1.3.3 1.6 1.2 1.5 1.9l-1.5 6.1c.1 0 .2 0 .3.1h-.3l-2.1 8.6c-.2.4-.6 1.1-1.5.8 0 0-2.4-.6-2.4-.6l-1.7 3.8 4.3 1.1c.8.2 1.6.4 2.3.6l-1.4 5.6 3.3.8 1.4-5.5c.9.2 1.8.5 2.6.7l-1.4 5.5 3.3.8 1.4-5.6c5.8 1.1 10.2.7 12-4.6 1.5-4.3-.1-6.7-3.1-8.3 2.2-.5 3.9-2 4.3-5z" fill="#fff"/></svg>
+                Feito com ₿ amor — Página educacional
+            </div>
+            <ul class="footer-links">
+                <li><a href="https://bitcoin.org" target="_blank">Bitcoin.org</a></li>
+                <li><a href="https://mempool.space" target="_blank">Mempool</a></li>
+                <li><a href="https://github.com/bitcoin/bitcoin" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
