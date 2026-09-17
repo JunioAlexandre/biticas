@@ -67,7 +67,7 @@
                 </a>
             </div>
 
-            <div class="ticker">
+            <div class="ticker" style="display: flex; flex-direction: column; gap: 1rem; align-items: center;">
                 <div class="ticker-card">
                     <div>
                         <div class="ticker-label">BTC / USD</div>
@@ -78,6 +78,17 @@
                         <div class="ticker-change up" id="btcChange">--</div>
                     </div>
                     <canvas class="ticker-sparkline" id="sparkline"></canvas>
+                </div>
+                <div class="ticker-card">
+                    <div>
+                        <div class="ticker-label">BTC / BRL</div>
+                        <div class="ticker-price" id="btcPriceBrl">--</div>
+                    </div>
+                    <div>
+                        <div class="ticker-label">24h</div>
+                        <div class="ticker-change up" id="btcChangeBrl">--</div>
+                    </div>
+                    <canvas class="ticker-sparkline" id="sparklineBrl"></canvas>
                 </div>
             </div>
         </div>

@@ -132,42 +132,63 @@
 
         // ===== PRICE DATA =====
         let priceHistory = [];
+        let priceHistoryBrl = [];
 
         async function fetchPrice() {
             try {
-                const [priceRes, tickerRes] = await Promise.all([
+                const [priceRes, tickerRes, priceBrlRes, tickerBrlRes] = await Promise.all([
                     fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT'),
-                    fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT')
+                    fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCUSDT'),
+                    fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCBRL'),
+                    fetch('https://api.binance.com/api/v3/ticker/24hr?symbol=BTCBRL')
                 ]);
                 const priceData = await priceRes.json();
                 const tickerData = await tickerRes.json();
+                const priceBrlData = await priceBrlRes.json();
+                const tickerBrlData = await tickerBrlRes.json();
 
                 const price = parseFloat(priceData.price);
                 const change = parseFloat(tickerData.priceChangePercent);
                 const marketCap = price * 19700000; // ~aprox. coins in circulation
 
+                const priceBrl = parseFloat(priceBrlData.price);
+                const changeBrl = parseFloat(tickerBrlData.priceChangePercent);
+
                 document.getElementById('btcPrice').textContent = price.toLocaleString('en-US', {
                     style: 'currency', currency: 'USD', maximumFractionDigits: 0
+                });
+
+                document.getElementById('btcPriceBrl').textContent = priceBrl.toLocaleString('pt-BR', {
+                    style: 'currency', currency: 'BRL', maximumFractionDigits: 0
                 });
 
                 const changeEl = document.getElementById('btcChange');
                 changeEl.textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
                 changeEl.className = `ticker-change ${change >= 0 ? 'up' : 'down'}`;
 
+                const changeBrlEl = document.getElementById('btcChangeBrl');
+                changeBrlEl.textContent = `${changeBrl >= 0 ? '+' : ''}${changeBrl.toFixed(2)}%`;
+                changeBrlEl.className = `ticker-change ${changeBrl >= 0 ? 'up' : 'down'}`;
+
                 document.getElementById('statMarketCap').textContent = `$${(marketCap / 1e12).toFixed(2)}T`;
 
                 priceHistory.push(price);
                 if (priceHistory.length > 30) priceHistory.shift();
-                drawSparkline();
+                drawSparkline('sparkline', priceHistory);
+
+                priceHistoryBrl.push(priceBrl);
+                if (priceHistoryBrl.length > 30) priceHistoryBrl.shift();
+                drawSparkline('sparklineBrl', priceHistoryBrl);
 
             } catch (e) {
                 document.getElementById('btcPrice').textContent = 'Erro';
+                document.getElementById('btcPriceBrl').textContent = 'Erro';
                 console.error(e);
             }
         }
 
-        function drawSparkline() {
-            const canvas = document.getElementById('sparkline');
+        function drawSparkline(canvasId, data) {
+            const canvas = document.getElementById(canvasId);
             const ctx = canvas.getContext('2d');
             const dpr = window.devicePixelRatio || 1;
 
@@ -177,7 +198,6 @@
 
             const w = canvas.offsetWidth;
             const h = canvas.offsetHeight;
-            const data = priceHistory;
             if (data.length < 2) return;
 
             const min = Math.min(...data);
